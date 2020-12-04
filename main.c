@@ -6,27 +6,27 @@ int main() {
     do{
     double sum=-1;
     int accnum=-1;
-    printf("'O' - Open a new account\n");
-    printf("'B' - check your balance\n");
-    printf("'D' - deposit\n");
-    printf("'W' - withdraw\n");
-    printf("'C' - Close account\n");
-    printf("'I' - Add interest to all accounts\n");
-    printf("'P' - Print all opened accounts\n");
-    printf("'E' - Close all accounts and exit program\n");
-    printf("Choose an option:\n");
+    printf("Please choose a transaction type:\n");
+    printf(" O-Open Account\n");
+    printf(" B-Balance Inquiry\n");
+    printf(" D-Deposit\n");
+    printf(" W-Withdrawal\n");
+    printf(" C-Close Account\n");
+    printf(" I-Interest\n");
+    printf(" P-Print\n");
+    printf(" E-Exit\n");
     scanf(" %c",&c);
     switch(c){
-        case 'O': printf("Enter the initial amount:");scanf(" %lf",&sum);open(sum);break;
-        case 'B': printf("Enter Account Number:");scanf(" %d",&accnum);check(accnum);break;
-        case 'D': printf("Enter Account Number:");scanf(" %d",&accnum);deposit(accnum);break;
-        case 'W': printf("Enter Account Number:");scanf(" %d",&accnum);withdraw(accnum);break;
-        case 'C': printf("Enter Account Number:");scanf(" %d",&accnum);close(accnum);break;
-        case 'I': printf("Enter Intereset percentage:");scanf(" %lf",&sum);interest(sum);break;
+        case 'O': printf("Please enter amount for deposit: ");scanf(" %lf",&sum);if(sum==-1){printf("Failed to read the amount\n");break;};open(sum);break;
+        case 'B': printf("Please enter account number: ");scanf(" %d",&accnum);check(accnum);break;
+        case 'D': printf("Please enter account number: ");scanf(" %d",&accnum);if(accnum==-1){printf("Failed to read the account number\n");break;};deposit(accnum);break;
+        case 'W': printf("Please enter account number: ");scanf(" %d",&accnum);withdraw(accnum);break;
+        case 'C': printf("Please enter account number: ");scanf(" %d",&accnum);close(accnum);break;
+        case 'I': printf("Please enter interest rate: ");scanf(" %lf",&sum);if(sum==-1){printf("Failed to read the interest rate\n");break;};interest(sum);break;
         case 'P':print();break;
         case 'E':closeall();break;
-        default: printf("Error- wrong char inserted\n");break;
-    }
+        default: printf("Invalid transaction type\n");break;
+    }if(c!='E'){printf("\n");};
     }while(c!='E');
     return 0;
 }
